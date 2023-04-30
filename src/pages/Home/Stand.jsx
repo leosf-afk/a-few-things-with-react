@@ -28,26 +28,21 @@ function Stand() {
 
 
   return (
-    <>
+    // "flex justify-center w-full" en el contenedor padre para evitar problemas en los contenedores hijos
+    //respecto al margin (en el caso del problema fue hacia la derecha)
+    <div className="flex justify-center w-full">
 
+<div className="sm:ml-0 md:ml-40 lg:ml-80 ">
+      <span className="mr-4" >ingresar el producto: </span>
+      <input className="border bg-blue-100 rounded py-0 px-0  justify-center mb-7" value={text} onChange={() => handleOnChangeInput(setText)} />
       <br />
-      <span>ingresar el producto: </span>
-      <input value={text} onChange={() => handleOnChangeInput(setText)} />
+      <span className="mr-11">ingrese el precio:</span>
+      <input className="border bg-blue-100 rounded py-0 px-0  justify-center mb-7" value={price} onChange={() => handleOnChangeInput(setPrice)} />
       <br />
-      <span>ingrese precio: </span>
-      <input value={price} onChange={() => handleOnChangeInput(setPrice)} />
-      <br />
-      <button onClick={() => handleOnClickButton(text, textItem,price,priceItem, setText, setTextItem, setPrice, setPriceItem)} >enviar </button>
+      <button className="py-2 px-2 btnSendProduct"  onClick={() => handleOnClickButton(text, textItem,price,priceItem, setText, setTextItem, setPrice, setPriceItem)} >enviar </button>
 
-      <ul>
-        {/* al metodo .map se le añaden 2 elementos, un elemento 
-        y un indice, es diferente a for por que itera y cambiar el arreglo */}
-        {textItem.map((textItem, index) => (
-          <p key={index}>producto: {textItem}, precio: {priceItem[index]}</p>
-        ))}
-      </ul>
 
-     <table>
+      <table className="ml-0" >
       <thead>
         <tr>
           <th>Numero</th>
@@ -56,6 +51,7 @@ function Stand() {
           <th>En stock?</th>
         </tr>
       </thead>
+      
       <tbody>
         {textItem.map( (textItem, index) => (
 
@@ -64,20 +60,28 @@ function Stand() {
             <td>{textItem}</td>
             <td>{priceItem[index]}</td>
             <td><input type="checkbox" value={isChecked}/></td>
-
           </tr>
-
-         
           ))}
 
       </tbody>
      </table>
+    </div>
+    
+    
+      
+      {/* <ul>
+      -  al metodo .map se le añaden 2 elementos, un elemento 
+        y un indice, es diferente a for por que itera y cambiar el arreglo -
+        {textItem.map((textItem, index) => (
+          <p key={index}>producto: {textItem}, precio: {priceItem[index]}</p>
+        ))}
+      </ul> */}
+
+     
 
 
-
-
-
-    </>
+    </div>
+   
   )
 }
 

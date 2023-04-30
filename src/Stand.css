@@ -1,11 +1,24 @@
 table {
-    border-collapse: collapse;
-    margin: auto;
-    border-spacing: 40px;
-  }
-  
-  td, tr, th {
-    border: 3px solid black;
-    padding: 20px;
-  }
+  border-collapse: collapse;
+  margin:3%;
+  border-spacing: 40px;
+}
 
+td, tr, th {
+  border: 3px solid black;
+  padding: 20px;
+}
+
+
+
+.btnSendProduct {
+  margin-left: 150px;
+}
+
+ /* .containerSm {
+  margin-right: 640px;
+} */
+
+  .containerLg {
+    margin-left: 650px;
+  } 
