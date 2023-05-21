@@ -27,7 +27,7 @@ function Header() {
         <div id='menu' className={`w-full block flex-grow lg:flex lg:items-center lg:w-auto text-center ${menuHidden ? 'hidden' : ''}`} >
           <div className="text-sm lg:flex-grow">
             <a href="#responsive-header" className="block mt-4  lg:inline-block lg:mt-0 text-pink-200 hover:text-white mr-4">
-            Example-1
+            App-clima
             </a>
             <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-pink-200 hover:text-white mr-4">
             Example-2

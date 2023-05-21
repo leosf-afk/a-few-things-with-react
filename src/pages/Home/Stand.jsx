@@ -20,6 +20,7 @@ function Stand() {
   //evento al realizar click en el button
   // const handleOnClickButton = () => {
   //   //los 3 puntos son necesarios, son un operador de propagacion
+  // ([...arregloActual, nuevoValor]), es necesario para evitar sobreescribir el arreglo.
   //   setTextItem([...textItem, text])
   //   setText('');
 
@@ -30,7 +31,7 @@ function Stand() {
   return (
     // "flex justify-center w-full" en el contenedor padre para evitar problemas en los contenedores hijos
     //respecto al margin (en el caso del problema fue hacia la derecha)
-    <div className="flex justify-center w-full">
+    <div className="flex justify-center w-full ">
 
 <div className="sm:ml-0 md:ml-40 lg:ml-80 ">
       <span className="mr-4" >ingresar el producto: </span>
@@ -71,7 +72,7 @@ function Stand() {
       
       {/* <ul>
       -  al metodo .map se le añaden 2 elementos, un elemento 
-        y un indice, es diferente a for por que itera y cambiar el arreglo -
+        y un indice, es diferente a for por que itera y muestra un nuevo arreglo -
         {textItem.map((textItem, index) => (
           <p key={index}>producto: {textItem}, precio: {priceItem[index]}</p>
         ))}
