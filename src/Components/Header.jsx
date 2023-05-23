@@ -13,10 +13,10 @@ function Header() {
 
 
   return (
-    <>
-      <nav className="flex items-center justify-between flex-wrap bg-gradient-to-r from-fuchsia-500 to-pink-500 p-6 w-full mb-10">
+    
+      <nav className="flex items-center justify-between flex-wrap bg-gradient-to-r from-fuchsia-500 to-pink-500 p-6 w-full">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <img src="src/img/trigger.jpg" alt="Image" class="h-14 w-14 object-cover mx-auto my-auto" ></img>
+          <img src="src/img/trigger.jpg" alt="Image" className="h-14 w-14 object-cover mx-auto my-auto" ></img>
           <span className="font-semibold text-xl tracking-tight">React and tailwindcss practice</span>
         </div>
         <div className="block lg:hidden">
@@ -42,7 +42,7 @@ function Header() {
         </div>
       </nav>
 
-    </>
+    
   )
 }
 
