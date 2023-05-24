@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { handleOnClickButton } from '../../Components/Functions';
 import { handleOnChangeInput } from '../../Components/Functions';
 import '../../Stand.css'
+import Pagination from '../../Components/Pagination';
 function Stand() {
   //  se declara una variable "text" (la que permanece con el valor) y una funcion de estado "setText"
   // (la que cambia el valor) y se utiliza el 
@@ -11,6 +12,29 @@ function Stand() {
   const [isChecked, setIschecked] = useState(false);
   const [textItem, setTextItem] = useState([]);
   const [priceItem, setPriceItem] = useState([]);
+
+  //paginacion
+  const [page, setPage] = useState(1);
+  const [forPage, setForPage] = useState(4);
+
+  //useEffect para max
+
+  const [max, setMax] = useState(0);
+
+  useEffect(() => {
+    const calculateMax = () => {
+      const max = textItem.length / forPage;
+      setMax(max)
+      // Hacer algo con el valor de max, por ejemplo, asignarlo a una variable o actualizar el estado
+    };
+
+    calculateMax(); // Llamar a la función para calcular max cuando textItem se actualice
+  }, [textItem, forPage]);
+
+
+
+
+
 
   // // evento para actualizar el estado del input
   //   const handleOnChangeInput = () => {
@@ -32,7 +56,9 @@ function Stand() {
 
     // "flex justify-center w-full" en el contenedor padre para evitar problemas en los contenedores hijos
     //respecto al margin (en el caso del problema fue hacia la derecha)
-    <div className="flex justify-center">
+
+
+    <div className=" flex justify-center  ">
       <div className="sm:ml-0 md:ml-40 lg:ml-80 ">
         <span className="mr-4" >ingresar el producto: </span>
         <input className="border bg-blue-100 rounded py-0 px-0  justify-center mb-7" value={text} onChange={() => handleOnChangeInput(setText)} />
@@ -44,34 +70,54 @@ function Stand() {
 
 
 
-        <table className="ml-0" >
-            <thead>
-              <tr>
-                <th>Numero</th>
-                <th>Producto</th>
-                <th>Precio</th>
-                <th>En stock?</th>
-              </tr>
-            </thead>
 
-            <tbody>
-              {textItem.map((textItem, index) => (
+        <table className=" ml-0  " >
 
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{textItem}</td>
-                  <td>{priceItem[index]}</td>
-                  <td><input type="checkbox" value={isChecked} /></td>
-                </tr>
-              ))}
+          <thead>
 
-            </tbody>
-          </table>
+            <tr>
+              <th>Numero</th>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>En stock?</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {textItem
+              .slice((page - 1) * forPage, (page - 1) * forPage + forPage)
+              //.map con callback
+              .map((text, index) => {
+                const priceIndex = (page - 1) * forPage + index;
+                return (
+                  <tr key={index}>
+                    <td>{priceIndex +1}</td>
+                    <td>{text}</td>
+                    <td>{priceItem[priceIndex]}</td>
+                    <td>
+                      <input type="checkbox" value={isChecked} />
+                    </td>
+                  </tr>
+                );
+              })}
+
+          </tbody>
+
+        </table>
+        <Pagination page={page} setPage={setPage} max={max} />
+
 
 
       </div>
 
+
     </div>
+
+
+
+
+
+
 
   )
 }

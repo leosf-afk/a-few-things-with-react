@@ -8,6 +8,7 @@ function Body({ children }) {
       </div>
     </div>
   )
+  
 }
 
 export default Body
