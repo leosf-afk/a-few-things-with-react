@@ -66,7 +66,17 @@ function Stand() {
         <span className="mr-11">ingrese el precio:</span>
         <input className="border bg-blue-100 rounded py-0 px-0  justify-center mb-7" value={price} onChange={() => handleOnChangeInput(setPrice)} />
         <br />
-        <button className="py-2 px-4 btnSendProduct bg-blue-100" onClick={() => handleOnClickButton(text, textItem, price, priceItem, setText, setTextItem, setPrice, setPriceItem)} >enviar </button>
+        <button className="py-2 px-4 btnSendProduct bg-blue-100" onClick={() => {
+
+          if (text.trim() === '' || price.trim() === '') {
+            alert("Por favor, complete uno de los dos campos.")
+
+          }
+          else {
+            handleOnClickButton(text, textItem, price, priceItem, setText, setTextItem, setPrice, setPriceItem)
+          }
+
+        }} >enviar </button>
 
 
 
@@ -91,7 +101,7 @@ function Stand() {
                 const priceIndex = (page - 1) * forPage + index;
                 return (
                   <tr key={index}>
-                    <td>{priceIndex +1}</td>
+                    <td>{priceIndex + 1}</td>
                     <td>{text}</td>
                     <td>{priceItem[priceIndex]}</td>
                     <td>
