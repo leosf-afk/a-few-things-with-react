@@ -4,7 +4,7 @@
     setTextItem([...textItem, text]);
     setText('');
     setPriceItem([...priceItem, price]);
-    setPrice(['']);
+    setPrice('');
 }
 
 
