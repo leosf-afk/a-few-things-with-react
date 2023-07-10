@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { handleOnClickButton } from '../../Components/Functions';
-import { handleOnChangeInput } from '../../Components/Functions';
+import { handleOnClickButton, handleOnChangeInput, handleOnKeyDownInput } from '../../Components/Functions';
 import '../../Stand.css'
 import Pagination from '../../Components/Pagination';
-import Typist from '../../Components/Typist';
+import Body from '../../Components/Body';
 
 function Stand() {
   //  se declara una variable "text" (la que permanece con el valor) y una funcion de estado "setText"
@@ -60,70 +59,75 @@ function Stand() {
     //respecto al margin (en el caso del problema fue hacia la derecha)
 
 
-    <div className=" flex justify-center  ">
-      <div className="sm:ml-0 md:ml-40 lg:ml-80 ">
-        <span className="mr-1" >ingresar el producto: </span>
-        <input className="border bg-blue-100 rounded py-0 px-0  justify-center mb-7" value={text} onChange={() => handleOnChangeInput(setText)} />
-        <br />
-        <span className="mr-1">ingrese el precio:</span>
-        <input className="border bg-blue-100 rounded py-0 px-0  justify-center mb-7" value={price} onChange={() => handleOnChangeInput(setPrice)} />
-        <br />
-        <button className="py-2 px-4  btnSendProduct bg-blue-100" onClick={() => {
+    <div className="flex flex-col relative justify-center    ">
+      <Body>
+        <div className="sm:ml-0 md:ml-40 lg:ml-80  ">
+          <span className="mr-1" >ingresar el producto: </span>
+          <input className="border bg-blue-100 rounded py-0 px-0  justify-center mb-7" value={text} onChange={() => handleOnChangeInput(setText)} />
+          <br />
+          <span className="mr-1">ingrese el precio:</span>
+          <input className="border bg-blue-100 rounded py-0 px-0  justify-center mb-7" onKeyDown={(e) => handleOnKeyDownInput(e)}  value={price}  onChange={() => handleOnChangeInput(setPrice)} />
+          <br />
+          <button className="py-2 px-4  btnSendProduct bg-blue-100" onClick={() => {
 
-          if (text.trim() === '' || price.trim() === '') {
-            alert("Por favor, complete uno de los dos campos.")
+            if (text.trim() === '' || price.trim() === '') {
+              alert("Por favor, complete uno de los dos campos.")
 
-          }
+            }
 
-          else {
-            handleOnClickButton(text, textItem, price, priceItem, setText, setTextItem, setPrice, setPriceItem)
-          }
+            else {
+              handleOnClickButton(text, textItem, price, priceItem, setText, setTextItem, setPrice, setPriceItem)
+            }
 
-        }} >enviar </button>
-
-
-
-
-        <table className=" ml-0  " >
-
-          <thead>
-
-            <tr>
-              <th>Numero</th>
-              <th>Producto</th>
-              <th>Precio</th>
-              <th>En stock?</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {textItem
-              .slice((page - 1) * forPage, (page - 1) * forPage + forPage)
-              //.map con callback
-              .map((text, index) => {
-                const priceIndex = (page - 1) * forPage + index;
-                return (
-                  <tr key={index}>
-                    <td>{priceIndex + 1}</td>
-                    <td>{text}</td>
-                    <td>{priceItem[priceIndex]}</td>
-                    <td>
-                      <input type="checkbox" value={isChecked} />
-                    </td>
-                  </tr>
-                );
-              })}
-
-          </tbody>
-
-        </table>
-        <Pagination page={page} setPage={setPage} max={max} />
-
-        <Typist />
+          }} >enviar </button>
 
 
 
-      </div>
+
+          <div className="overflow-x-auto">
+            <table className=" ml-0  " >
+
+              <thead>
+
+                <tr>
+                  <th>Numero</th>
+                  <th>Producto</th>
+                  <th>Precio</th>
+                  <th>En stock?</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {textItem
+                  .slice((page - 1) * forPage, (page - 1) * forPage + forPage)
+                  //.map con callback
+                  .map((text, index) => {
+                    const priceIndex = (page - 1) * forPage + index;
+                    return (
+                      <tr key={index}>
+                        <td>{priceIndex + 1}</td>
+                        <td>{text}</td>
+                        <td>{priceItem[priceIndex]}</td>
+                        <td>
+                          <input type="checkbox" value={isChecked} />
+                        </td>
+                      </tr>
+                    );
+                  })}
+
+              </tbody>
+
+            </table>
+          </div>
+
+          <Pagination page={page} setPage={setPage} max={max} />
+
+
+
+
+        </div>
+
+      </Body>
 
 
     </div>

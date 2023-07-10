@@ -3,18 +3,19 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://leosf-afk.github.io/a-few-things-with-react/index.html",
+  "homepage": "/a-few-things-with-react/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typewriter-effect": "^2.19.0",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

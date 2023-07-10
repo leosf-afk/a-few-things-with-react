@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import triggerLogo from '../img/trigger.jpg'
+import Typist from '../Components/Typist'
 
 
 function Header() {
@@ -16,8 +18,8 @@ function Header() {
     
       <nav className="flex items-center justify-between flex-wrap bg-gradient-to-r from-fuchsia-500 to-pink-500 p-6 w-full">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <img src="src/img/trigger.jpg" alt="Image" className="h-14 w-14 object-cover mx-auto my-auto" ></img>
-          <span className="font-semibold text-xl tracking-tight">React and tailwindcss practice</span>
+        <img src={triggerLogo} alt="Image" className="h-14 w-14 object-cover mx-auto my-auto" ></img>
+          <span className="font-semibold text-xl tracking-tight "> <Typist/> </span>
         </div>
         <div className="block lg:hidden">
           <button id='boton' className="flex items-center px-3 py-2 border rounded text-pink-200 border-pink-400 hover:text-white hover:border-white" onClick={toggleMenu}>

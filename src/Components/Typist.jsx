@@ -5,25 +5,16 @@ function Typist() {
   return (
     <Typewriter
   onInit={(typewriter) => {
-    typewriter.typeString('Hello World!')
-      .callFunction(() => {
-        console.log('String typed out!');
-      })
+    typewriter.typeString('Practica de React & tailwidcss')
       .pauseFor(2500)
       .deleteAll()
-      typewriter.typeString('im a message!')
-      .pauseFor(2500)
-      .deleteAll()
-      typewriter.typeString('by leo')
-      .pauseFor(2500)
-      .deleteAll()
-      typewriter.typeString('<33')
-      .pauseFor(2500)
-      .deleteAll()
-      typewriter.typeString('si lees esto es por que te quiero.')
+      typewriter.typeString('hecho por leo')
       .pauseFor(2500)
       .deleteAll()
       .start();
+  }}
+  options={{
+    loop: true,
   }}
 />
   )

@@ -1,6 +1,6 @@
 
 
- export const handleOnClickButton = (text, textItem, price,priceItem, setText, setTextItem, setPrice, setPriceItem) => {
+export const handleOnClickButton = (text, textItem, price, priceItem, setText, setTextItem, setPrice, setPriceItem) => {
     setTextItem([...textItem, text]);
     setText('');
     setPriceItem([...priceItem, price]);
@@ -14,6 +14,28 @@ export const handleOnChangeInput = (setText) => {
 
 }
 
+export const handleOnKeyDownInput = (e) => {
+    const validKey = [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "Backspace",
+        ",",
+        "."
+    ];
+
+    if (!validKey.includes(e.key)) {
+        e.preventDefault();
+    }
+
+}
 
 
 

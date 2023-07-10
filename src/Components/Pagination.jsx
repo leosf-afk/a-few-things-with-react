@@ -24,7 +24,7 @@ function Pagination({ page, setPage, max }) {
     }
 
     //validacion input
-    const onKeyDown = e => {
+    const handleOnKeyDownInput = e => {
         if (e.keyCode == 13) {
             const inputValue = parseInt(e.target.value);
             if (
@@ -52,10 +52,10 @@ function Pagination({ page, setPage, max }) {
                     <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
                 </svg>
             </button>
-            <input onChange={() => handleOnChangeInput(setInput)} onKeyDown={e => onKeyDown(e)} type="text" className="w-10 mx-2 h-7 text-center" value={input} />
-            <p className="ml-0">de {maxInt()}</p>
+            <input onChange={() => handleOnChangeInput(setInput)} onKeyDown={e => handleOnKeyDownInput(e)} type="text" className="w-10 mx-2 h-7 text-center" value={input} />
+            <p className="ml-0">de {maxInt()} </p>
             <button disabled={page >= maxInt()  }
-             className={`py-2 px-4 h-7  bg-blue-100 ${page >= maxInt() ? "opacity-50 cursor-not-allowed" : "opacity-100 cursor-pointer"}`} onClick={nextPage}>
+             className={`py-2 px-4 h-7 m-2 bg-blue-100 ${page >= maxInt() ? "opacity-50 cursor-not-allowed" : "opacity-100 cursor-pointer"}`} onClick={nextPage}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="15" height="15">
                     <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L14.17 12z" />
                 </svg>
